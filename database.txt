@@ -1,0 +1,19 @@
+The host name of the server is localhost
+
+password is : marcusaggripa20!
+
+Database
+
+Database name : Napoleon
+owner: postgres
+
+
+SQL commands
+
+CREATE TABLE Quotes(
+	id integer PRIMARY KEY,
+	quote text,
+	author text
+);
+
+SELECT * FROM Quotes
