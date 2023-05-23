@@ -23,9 +23,21 @@ var quotes = []napoleonQuote{
 func getQuotes(context *gin.Context) {
 	context.IndentedJSON(http.StatusOK, quotes)
 }
+func getQuoteById(c *gin.Context) {
+	id := c.Param("id")
+
+	for _, a := range quotes {
+		if a.ID == id {
+			c.IndentedJSON(http.StatusOK, a)
+			return
+		}
+	}
+	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "quote not found"})
+}
 
 func main() {
 	router := gin.Default()
 	router.GET("/quotes", getQuotes)
+	router.GET("/quotes/:id", getQuoteById)
 	router.Run("localhost:9000")
 }
